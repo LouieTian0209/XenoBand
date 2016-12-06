@@ -89,6 +89,8 @@ private slots:
 
     void on_instantChatButton_clicked();
 
+    void on_tutorialButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

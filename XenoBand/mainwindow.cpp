@@ -1,6 +1,8 @@
 
 #include <iostream>
 
+#include <QDesktopServices>
+
 #include "connectwindow.h"
 #include "core.h"
 #include "librarywindow.h"
@@ -188,4 +190,9 @@ void MainWindow::on_instantChatButton_clicked()
 {
     InstantChat *instantChat = new InstantChat;
     instantChat->show();
+}
+
+void MainWindow::on_tutorialButton_clicked()
+{
+    QDesktopServices::openUrl(QUrl("http://xenoband.com"));
 }
