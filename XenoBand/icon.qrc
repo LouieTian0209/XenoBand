@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icon/record.png</file>
+        <file>icon/zoom_in.png</file>
+        <file>icon/zoom_out.png</file>
+        <file>icon/pause.png</file>
+        <file>icon/stop.png</file>
+        <file>icon/play.png</file>
+        <file>icon/rewind.png</file>
+    </qresource>
+</RCC>
