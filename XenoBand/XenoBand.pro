@@ -18,7 +18,9 @@ RC_FILE = icon.rc
 SOURCES += main.cpp core.cpp mainwindow.cpp \
     audiorecorder.cpp \
     binaryutil.cpp \
+    chatroom.cpp \
     connectwindow.cpp \
+    globalserver.cpp \
     instantchat.cpp \
     keyboard.cpp \
     librarywindow.cpp \
@@ -49,12 +51,13 @@ SOURCES += main.cpp core.cpp mainwindow.cpp \
     wavewritercore.cpp \
     wavereadercore.cpp \
     waveeditor.cpp \
-    chatroom.cpp \
 
 HEADERS  += core.h mainwindow.h \
     audiorecorder.h \
     binaryutil.h \
+    chatroom.h \
     connectwindow.h \
+    globalserver.h \
     instantchat.h \
     keyboard.h \
     librarywindow.h \
@@ -85,11 +88,12 @@ HEADERS  += core.h mainwindow.h \
     wavewritercore.h \
     wavereadercore.h \
     waveeditor.h \
-    chatroom.h \
 
 FORMS    += mainwindow.ui \
     audiorecorder.ui \
+    chatroom.ui \
     connectwindow.ui \
+    globalserver.ui \
     instantchat.ui \
     keyboard.ui \
     librarywindow.ui \
@@ -108,7 +112,9 @@ FORMS    += mainwindow.ui \
     wavewidget.ui \
     wavewriter.ui \
     waveeditor.ui \
-    chatroom.ui \
 
 RESOURCES += \
     icon.qrc
+
+DISTFILES += \
+    Test.qml

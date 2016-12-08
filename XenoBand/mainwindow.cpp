@@ -5,6 +5,7 @@
 
 #include "connectwindow.h"
 #include "core.h"
+#include "globalserver.h"
 #include "librarywindow.h"
 #include "loop.h"
 #include "mainwindow.h"
@@ -183,7 +184,8 @@ void MainWindow::on_localServerButton_clicked()
 
 void MainWindow::on_globalServerButton_clicked()
 {
-    // TODO
+    GlobalServer *globalServer = new GlobalServer;
+    globalServer->show();
 }
 
 void MainWindow::on_instantChatButton_clicked()
