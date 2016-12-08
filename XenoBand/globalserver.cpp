@@ -16,6 +16,17 @@ GlobalServer::GlobalServer(QWidget *parent) :
 
 GlobalServer::~GlobalServer()
 {
+    qDebug() << "Global Server destructed";
+
+    delete ui;
+    delete timer;
+}
+
+void GlobalServer::closeEvent(QCloseEvent *)
+{
+    qDebug() << "Global Server closed";
+
+    timer->stop();
     delete ui;
     delete timer;
 }

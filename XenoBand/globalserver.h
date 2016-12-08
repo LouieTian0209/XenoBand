@@ -20,6 +20,8 @@ private:
 
     QTimer *timer;
 
+    void closeEvent(QCloseEvent *);
+
 private slots:
     void pull();
 };
