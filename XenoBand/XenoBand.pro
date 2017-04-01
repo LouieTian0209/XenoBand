@@ -20,7 +20,6 @@ SOURCES += main.cpp core.cpp mainwindow.cpp \
     binaryutil.cpp \
     chatroom.cpp \
     connectwindow.cpp \
-    globalserver.cpp \
     instantchat.cpp \
     keyboard.cpp \
     librarywindow.cpp \
@@ -57,7 +56,6 @@ HEADERS  += core.h mainwindow.h \
     binaryutil.h \
     chatroom.h \
     connectwindow.h \
-    globalserver.h \
     instantchat.h \
     keyboard.h \
     librarywindow.h \
@@ -93,7 +91,6 @@ FORMS    += mainwindow.ui \
     audiorecorder.ui \
     chatroom.ui \
     connectwindow.ui \
-    globalserver.ui \
     instantchat.ui \
     keyboard.ui \
     librarywindow.ui \

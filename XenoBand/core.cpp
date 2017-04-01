@@ -1,6 +1,6 @@
 #include "core.h"
 
-string dirpath = "/.xenoband";
+string dirpath = "/XenoBand";
 
 static void mkpath()
 {
@@ -14,7 +14,7 @@ string Core::defaultWavePath()
 {
     mkpath();
 
-    string path = QDir::homePath().toStdString() + dirpath + "/tmp.wav";
+    string path = QDir::homePath().toStdString() + dirpath + "/recent.wav";
 
     return path;
 }

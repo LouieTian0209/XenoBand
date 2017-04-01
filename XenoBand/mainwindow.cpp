@@ -5,7 +5,6 @@
 
 #include "connectwindow.h"
 #include "core.h"
-#include "globalserver.h"
 #include "librarywindow.h"
 #include "loop.h"
 #include "mainwindow.h"
@@ -49,6 +48,12 @@ void MainWindow::on_actionMIDI_Writer_triggered()
     writer->show();
 }
 
+void MainWindow::on_actionMIDI_Editor_triggered()
+{
+    MIDIEditor *editor = new MIDIEditor;
+    editor->show();
+}
+
 void MainWindow::on_actionWave_Reader_triggered()
 {
     WaveReader *reader = new WaveReader;
@@ -67,54 +72,9 @@ void MainWindow::on_actionWave_Editor_triggered()
     editor->show();
 }
 
-void MainWindow::on_actionPitch_Shifter_triggered()
+void MainWindow::on_actionTutorial_triggered()
 {
-    PitchShifter *pitchShifter = new PitchShifter;
-    pitchShifter->show();
-}
-
-void MainWindow::on_actionAudio_Recorder_triggered()
-{
-    AudioRecorder *audioRecorder = new AudioRecorder;
-    audioRecorder->show();
-}
-
-void MainWindow::on_actionConnect_triggered()
-{
-    ConnectWindow *connect = new ConnectWindow;
-    connect->show();
-}
-
-void MainWindow::on_actionInstant_Chat_triggered() {
-    InstantChat *instantChat = new InstantChat;
-    instantChat->show();
-}
-
-void MainWindow::on_actionMIDI_Editor_triggered()
-{
-    MIDIEditor *editor = new MIDIEditor;
-    editor->show();
-}
-
-void MainWindow::on_actionSound_Synthesizer_triggered() {
-    Synthesizer *synthesizer = new Synthesizer;
-    synthesizer->show();
-}
-
-void MainWindow::on_actionKeyboard_triggered(){
-    Keyboard *keyboard = new Keyboard;
-    keyboard->show();
-}
-
-void MainWindow::on_actionSound_Mapping_triggered(){
-    SoundMapping *soundmapping = new SoundMapping;
-    soundmapping->show();
-}
-
-void MainWindow::on_actionLoop_triggered()
-{
-    Loop *loop = new Loop;
-    loop->show();
+    QDesktopServices::openUrl(QUrl("http://xenoband.com"));
 }
 
 void MainWindow::on_synthesizerButton_clicked()
@@ -167,7 +127,7 @@ void MainWindow::on_loopButton_clicked()
 
 void MainWindow::on_samplesButton_clicked()
 {
-    // TODO
+    QDesktopServices::openUrl(QUrl("http://xenoband.com"));
 }
 
 void MainWindow::on_editorButton_clicked()
@@ -180,12 +140,6 @@ void MainWindow::on_localServerButton_clicked()
 {
     ConnectWindow *connect = new ConnectWindow;
     connect->show();
-}
-
-void MainWindow::on_globalServerButton_clicked()
-{
-    GlobalServer *globalServer = new GlobalServer;
-    globalServer->show();
 }
 
 void MainWindow::on_instantChatButton_clicked()

@@ -40,7 +40,7 @@ double (*functionSynthesis)(double);
 
 static double functionSynthesisExample(double x)
 {
-    return (sin(x) + sin(2*x)/2 + sin(4*x)/4)/4;
+    return (sin(x) + sin(2*x) + sin(4*x))/4;
 }
 
 static double deltaAM = 0;
@@ -68,8 +68,8 @@ WaveWriter::WaveWriter(QWidget *parent) :
     ui->setupUi(this);
 
     // [YZ] init parameters
-    on_ratioAM_valueChanged(ratioAM);
-    on_ratioFM_valueChanged(ratioFM);
+    // on_ratioAM_valueChanged(ratioAM);
+    // on_ratioFM_valueChanged(ratioFM);
 
     fp = functionDefault;
 
