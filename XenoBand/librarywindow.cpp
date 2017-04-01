@@ -16,7 +16,7 @@ LibraryWindow::LibraryWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QSettings setting("myCompany","sound mapping");
+    QSettings setting("XenoBand","sound mapping");
 
     setting.beginGroup("mappingName");
     foreach(const QString &name,setting.allKeys()){

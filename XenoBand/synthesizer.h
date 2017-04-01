@@ -35,7 +35,7 @@ private:
 
     WaveWidget *resultWaveWidget;
 
-    void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *);
 };
 
 #endif

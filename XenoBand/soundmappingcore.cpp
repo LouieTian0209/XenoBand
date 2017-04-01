@@ -17,6 +17,7 @@ SoundMappingCore::~SoundMappingCore()
 void SoundMappingCore::playSound(int note){
     // play sound
     QString filepath = pathArr[note];
+
     qDebug() << "SoundMappingCore: play" << filepath;
 
     if (filepath.endsWith(".wav"))
@@ -32,7 +33,7 @@ void SoundMappingCore::playSound(int note){
 }
 
 void SoundMappingCore::initPathMapping(const QString &mappingName) {
-    QSettings setting("myCompany", mappingName);
+    QSettings setting("XenoBand", mappingName);
     setting.beginGroup("midi#-filepath Mapping");
 
     foreach(const QString &num, setting.allKeys()){
@@ -44,7 +45,7 @@ void SoundMappingCore::initPathMapping(const QString &mappingName) {
 
 int SoundMappingCore::numMappings()
 {
-    QSettings setting("myCompany","sound mapping");
+    QSettings setting("XenoBand","sound mapping");
     setting.beginGroup("mappingName");
     int size = setting.allKeys().size();
     setting.endGroup();
@@ -54,7 +55,7 @@ int SoundMappingCore::numMappings()
 
 QString SoundMappingCore::getMapping(int index)
 {
-    QSettings setting("myCompany","sound mapping");
+    QSettings setting("XenoBand","sound mapping");
     setting.beginGroup("mappingName");
     int size = setting.allKeys().size();
     if (size <= index)
@@ -67,7 +68,7 @@ QString SoundMappingCore::getMapping(int index)
 
 QStringList SoundMappingCore::getMappings()
 {
-    QSettings setting("myCompany","sound mapping");
+    QSettings setting("XenoBand","sound mapping");
     setting.beginGroup("mappingName");
     QStringList mappings = setting.allKeys();
     setting.endGroup();

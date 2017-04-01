@@ -38,7 +38,7 @@ ConnectWindow::~ConnectWindow()
     delete bandKeyboard;
 }
 
-void ConnectWindow::closeEvent(QCloseEvent *event)
+void ConnectWindow::closeEvent(QCloseEvent *)
 {
     // send message to server
     QByteArray array;
@@ -50,7 +50,8 @@ void ConnectWindow::closeEvent(QCloseEvent *event)
     // send to server
     out << QString(message);
     out.device()->seek(0);
-    client->write(array);
+    if (client)
+        client->write(array);
 }
 
 void ConnectWindow::on_sendMessage_clicked()

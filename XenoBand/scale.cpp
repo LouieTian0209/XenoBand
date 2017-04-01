@@ -194,7 +194,7 @@ double Scale::getFrequency(int key)
 {
     double result = 0.0;
     int index = key - 21;
-    if(0 <= index <= 87)
+    if(0 <= index && index <= 87)
         result = keyFrequencies[index];
     else if(index < 0)
         result = keyFrequencies[0] / (pow(2.0, (0 - index) / 12.0));

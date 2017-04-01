@@ -104,7 +104,7 @@ private slots:
     /* save file onto local file system */
     void on_saveButton_clicked();
 
-    void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *);
 
     void on_colorButton_clicked();
 

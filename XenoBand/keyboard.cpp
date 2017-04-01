@@ -26,7 +26,7 @@ Keyboard::Keyboard(QWidget *parent) :
     ui->pushButton_E2->setStyleSheet("QPushButton{ background-color: white; }");
     ui->pushButton_F2->setStyleSheet("QPushButton{ background-color: white; }");
 
-    QSettings setting("myCompany","sound mapping");
+    QSettings setting("XenoBand","sound mapping");
     setting.beginGroup("midi#-key Mapping");
     ui->pushButton_C->setText(setting.value("60").toString());
     ui->pushButton_D->setText(setting.value("62").toString());
@@ -70,7 +70,7 @@ Keyboard::~Keyboard()
 void Keyboard::keyPressEvent(QKeyEvent *keyevent){
     QString key=keyevent->text().toUpper();
 
-    QSettings setting("myCompany",ui->comboBox->itemText(0));
+    QSettings setting("XenoBand",ui->comboBox->itemText(0));
     setting.beginGroup("key-midi# Mapping");
 
     if (!setting.contains(key))
@@ -104,7 +104,7 @@ void Keyboard::keyPressEvent(QKeyEvent *keyevent){
 void Keyboard::keyReleaseEvent(QKeyEvent *keyevent){
     QString key=keyevent->text().toUpper();
 
-    QSettings setting("myCompany",ui->comboBox->itemText(0));
+    QSettings setting("XenoBand",ui->comboBox->itemText(0));
     setting.beginGroup("key-midi# Mapping");
     int MIDInum=setting.value(key).toInt();
 

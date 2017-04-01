@@ -51,10 +51,10 @@ private slots:
     void on_pasteButton_clicked();
 
     /* zoom wave on x direction for given multiplier */
-    void on_xZoomBox_valueChanged(int arg1);
+    void on_xZoomBox_valueChanged(int);
 
     /* zoom wave on y direction for given multiplier */
-    void on_yZoomBox_valueChanged(int arg1);
+    void on_yZoomBox_valueChanged(int);
 
     void onPlay();
 

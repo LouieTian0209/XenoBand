@@ -86,7 +86,7 @@ void WaveEditor::on_loadButton_clicked()
     clear();
 
     // draw all samples of the wave file onto wave widget
-    for (int i = 0; i < waveReaderCore->samples.size(); i++)
+    for (int i = 0; i < (int) waveReaderCore->samples.size(); i++)
     {
         buffer.push_back(waveReaderCore->samples[i]);
     }
@@ -178,7 +178,7 @@ void WaveEditor::on_pasteButton_clicked()
     //int end = ui->endEdit->text().toInt();
 
     // copy content from local copy buffer onto main buffer
-    for (int i = start; i < start + cbuffer.size(); i++)
+    for (int i = start; i < (int) (start + cbuffer.size()); i++)
     {
         buffer[i] = cbuffer[i - start];
     }
@@ -187,14 +187,14 @@ void WaveEditor::on_pasteButton_clicked()
 }
 
 // zooming in and out on horizontal direction
-void WaveEditor::on_xZoomBox_valueChanged(int arg1)
+void WaveEditor::on_xZoomBox_valueChanged(int)
 {
     //waveWidget->displayBuffer(buffer, baseRatioX * arg1, baseRatioY * ui->yZoomBox->value());
     updateDisplay();
 }
 
 // zooming in and out on vertical direction
-void WaveEditor::on_yZoomBox_valueChanged(int arg1)
+void WaveEditor::on_yZoomBox_valueChanged(int)
 {
     //waveWidget->displayBuffer(buffer, baseRatioX * ui->xZoomBox->value(), baseRatioY * arg1);
     updateDisplay();
@@ -237,8 +237,8 @@ void WaveEditor::on_shiftCutButton_clicked()
     int end = ui->endEdit->text().toInt();
 
     // prevent index out of bound.
-    if (end >= buffer.size())
-        end = buffer.size();
+    if (end >= (int) (buffer.size()))
+        end = (int) (buffer.size());
 
     cbuffer.clear();
     // copy selected area into copy buffer

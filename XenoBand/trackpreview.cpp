@@ -4,10 +4,11 @@
 
 TrackPreview::TrackPreview(QWidget *parent, bool isWaveTrack) :
     QWidget(parent),
-    ui(new Ui::TrackPreview),
-    isWaveTrack(isWaveTrack)
+    ui(new Ui::TrackPreview)
 {
     ui->setupUi(this);
+
+    this->isWaveTrack = isWaveTrack;
 
     ui->typeLabel->setText(isWaveTrack ? "Wave" : "MIDI");
 

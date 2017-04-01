@@ -36,7 +36,7 @@ Synthesizer::~Synthesizer()
     delete ui;
 }
 
-void Synthesizer::closeEvent(QCloseEvent *event)
+void Synthesizer::closeEvent(QCloseEvent *)
 {
     oscillators.clear();
 }

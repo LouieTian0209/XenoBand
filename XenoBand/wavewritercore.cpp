@@ -1,11 +1,11 @@
 #include "wavewritercore.h"
 
-static double defaultAM(double x)
+static double defaultAM(double)
 {
     return 1;
 }
 
-static double defaultFM(double x)
+static double defaultFM(double)
 {
     return 1;
 }
@@ -111,7 +111,9 @@ void WaveWriterCore::writeWave(ofstream &ofs, vector<int> &buffer, int numChanne
     // [YZ] sample rate may change the pitch
     // int sampleRate = 44100;
 
-    int milliSeconds = buffer.size() * 1000 / sampleRate;
+    // unused
+    // int milliSeconds = buffer.size() * 1000 / sampleRate;
+
     int numSamples = buffer.size();
 
     writeString(ofs, "RIFF", 4);
@@ -143,9 +145,9 @@ void WaveWriterCore::writeWave(ofstream &ofs, vector<int> &buffer, int numChanne
 
     // cerr << M_PI << endl;
 
-    int sup = 0x7000;
+    // int sup = 0x7000;
 
-    for (int i = 0; i < buffer.size(); i++)
+    for (int i = 0; i < (int) buffer.size(); i++)
     {
         writeShort(ofs, buffer[i]);
     }

@@ -62,7 +62,7 @@ private:
     QWidget *assWidget;
     QMap<QString, QComboBox *> comboMap;
 
-    void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *);
 };
 
 #endif // TEST_H

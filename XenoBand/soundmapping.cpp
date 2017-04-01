@@ -10,7 +10,7 @@ SoundMapping::SoundMapping(QWidget *parent) :
     ui->setupUi(this);
     numCols=4;
 
-    QSettings setting("myCompany","sound mapping");
+    QSettings setting("XenoBand","sound mapping");
     setting.beginGroup("mappingName");
 
     foreach(const QString &name,setting.allKeys()){
@@ -49,6 +49,9 @@ QString SoundMapping::getNoteName(int note)
     case 10: return QString("A#") + QString::number(octave) + QString(" / ") + QString("Bb") + QString::number(octave);
     case 11: return QString("B") + QString::number(octave); break;
     }
+
+    // should not happen
+    return QString("Unknown");
 }
 
 void SoundMapping::displayFormat(){
@@ -87,12 +90,12 @@ void SoundMapping::saveMapping(QString &instrumentName) {
 
     qDebug() << "save sound mapping " << instrumentName;
 
-    QSettings set("myCompany","sound mapping");
+    QSettings set("XenoBand","sound mapping");
     set.beginGroup("mappingName");
     set.setValue(instrumentName, instrumentName);
     set.endGroup();
 
-    QSettings setting("myCompany", instrumentName);
+    QSettings setting("XenoBand", instrumentName);
     setting.clear();
 
     setting.beginGroup("midi#-key Mapping");
@@ -136,7 +139,9 @@ void SoundMapping::loadMapping() {
 
     QString filename=ui->mappingList->currentItem()->text();
 
-    QSettings setting("myCompany",filename);
+    QSettings setting("XenoBand", filename);
+
+    qDebug() << "setting" << setting.fileName();
 
     int i=0;
     QString filePath;
@@ -278,18 +283,12 @@ void SoundMapping::on_defaultKeyButton_clicked()
     ui->mappingTable->setItem(91-offset,2,new QTableWidgetItem("="));
 }
 
-//void SoundMapping::on_addMapping_clicked()
-//{
-//    QString filename=ui->mappingName->text();
-//    ui->mappingList->addItem(filename);
-//}
-
 void SoundMapping::on_deleteMapping_clicked()
 {
     QString name=ui->mappingList->currentItem()->text();
     ui->mappingList->takeItem(ui->mappingList->row(ui->mappingList->currentItem()));
 
-    QSettings setting("myCompany","sound mapping");
+    QSettings setting("XenoBand","sound mapping");
     setting.beginGroup("mappingName");
     setting.remove(name);
     setting.endGroup();

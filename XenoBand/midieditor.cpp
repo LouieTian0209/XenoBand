@@ -363,7 +363,7 @@ void MIDIEditor::on_saveButton_clicked()
     ofs.close();
 }
 
-void MIDIEditor::closeEvent(QCloseEvent *event)
+void MIDIEditor::closeEvent(QCloseEvent *)
 {
     // [YZ] unnecessary
     /*

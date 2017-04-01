@@ -7,7 +7,7 @@
 #include "wavewritercore.h"
 #include "ui_wavewriter.h"
 
-static double functionDefault(double x)
+static double functionDefault(double)
 {
     return 1;
 }
@@ -102,7 +102,7 @@ void WaveWriter::setFunctionSynthesis(double (*fp)(double))
     waveWidget->displayFunction(fp);
 }
 
-double (*WaveWriter::getFunctionByIndex(int index)) (double)
+double (*WaveWriter::getFunctionByIndex(int)) (double)
 {
     if (ui->waveCombo->currentIndex()==0)
         return functionSynthesis;

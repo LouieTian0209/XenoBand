@@ -181,21 +181,6 @@
     </layout>
    </item>
   </layout>
-  <zorder>label_metronome</zorder>
-  <zorder>spinBox_metronome</zorder>
-  <zorder>label_signature_now</zorder>
-  <zorder>label_signature</zorder>
-  <zorder></zorder>
-  <zorder></zorder>
-  <zorder></zorder>
-  <zorder>time_lineEdit</zorder>
-  <zorder>pos_label</zorder>
-  <zorder>pos_lineEdit</zorder>
-  <zorder>tempo_label</zorder>
-  <zorder>tempo_lineEdit</zorder>
-  <zorder>signature_label</zorder>
-  <zorder>time_label</zorder>
-  <zorder>horizontalSpacer</zorder>
  </widget>
  <resources/>
  <connections/>

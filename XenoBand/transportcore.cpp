@@ -99,7 +99,7 @@ int TransportCore::stop()
     recording = 0;
     timer->stop();
 
-    emit notifyTimeout();
+    // emit notifyTimeout();
     return 0;
 }
 

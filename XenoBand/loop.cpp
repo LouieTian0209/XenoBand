@@ -4,7 +4,6 @@
 
 Loop::Loop(QWidget *parent) :
     QWidget(parent),
-    initDone(false),
     ui(new Ui::Loop)
 {    
     ui->setupUi(this);
@@ -16,7 +15,7 @@ Loop::Loop(QWidget *parent) :
 
     ui->transportBox->layout()->addWidget(transportWidget);
 
-    QSettings setting("myCompany","sound mapping");
+    QSettings setting("XenoBand","sound mapping");
     setting.beginGroup("mappingName");
     foreach (const QString &name, setting.allKeys()) {
         ui->instCombo->addItem(name);
