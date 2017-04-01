@@ -61,6 +61,7 @@ private slots:
 
     // help menu
     void on_actionTutorial_triggered();
+    void on_actionContact_triggered();
 
     // first column
     void on_synthesizerButton_clicked();

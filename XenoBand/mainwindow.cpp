@@ -77,6 +77,11 @@ void MainWindow::on_actionTutorial_triggered()
     QDesktopServices::openUrl(QUrl("http://xenoband.com"));
 }
 
+void MainWindow::on_actionContact_triggered()
+{
+    QDesktopServices::openUrl(QUrl("http://xenoband.com"));
+}
+
 void MainWindow::on_synthesizerButton_clicked()
 {
     Synthesizer *synthesizer = new Synthesizer;
