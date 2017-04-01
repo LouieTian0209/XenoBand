@@ -146,7 +146,7 @@ void SoundMapping::loadMapping() {
     int i=0;
     QString filePath;
 
-    int nrow;
+    int nrow=0;
     if(setting.childGroups().contains("midi#-key Mapping")){
         setting.beginGroup("midi#-key Mapping");
         foreach(const QString &num, setting.allKeys()){

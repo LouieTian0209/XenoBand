@@ -217,12 +217,12 @@ void MIDIReaderCore::readTrack(ifstream &ifs)
             {
                 emit sendRawMIDI(3, string("Meta: Time Signature"));
 
-                int nn, dd, cc, bb;
+                int nn, dd;
                 nn = eventbuffer[0];
                 dd = eventbuffer[1];
                 dd = pow(2, dd);
-                cc = eventbuffer[2];
-                bb = eventbuffer[3];
+                //cc = eventbuffer[2];
+                //bb = eventbuffer[3];
 
                 timeSignatureN = nn;
                 timeSignatureD = dd;
