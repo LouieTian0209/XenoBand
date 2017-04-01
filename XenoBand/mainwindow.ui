@@ -50,9 +50,17 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item alignment="Qt::AlignBottom">
         <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <family>Rockwell</family>
+           <pointsize>20</pointsize>
+           <weight>75</weight>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">font: bold italic;
-font-size: 25px;
+          <string notr="true">font: 75 bold italic 20pt &quot;Rockwell&quot;;
 color: red;</string>
          </property>
          <property name="text">
@@ -83,10 +91,19 @@ color: red;</string>
            <height>20</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Bodoni MT</family>
+           <pointsize>10</pointsize>
+           <weight>9</weight>
+           <italic>true</italic>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">border: none;
+          <string notr="true">font: 75 italic 10pt &quot;Bodoni MT&quot;;
 color: blue;
-font: italic;</string>
+border: none</string>
          </property>
          <property name="text">
           <string>www.xenoband.com</string>
@@ -493,7 +510,7 @@ font: italic;</string>
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMIDI">

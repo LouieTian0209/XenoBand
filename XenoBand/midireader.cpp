@@ -171,7 +171,7 @@ void MIDIReader::readTrack(ifstream& ifs)
             ifs.read(buffer, 1);
             byte = buffer[0];
 
-            if ((0x80 <= byte) && (byte <= 0xff))
+            if (0x80 <= byte)
                 break;
             else
                 updateRow(1, row++, "<undefined event type>");
@@ -275,12 +275,12 @@ void MIDIReader::readTrack(ifstream& ifs)
             {
                 updateRow(3, row++, "Meta: Time Signature");
 
-                int nn, dd, cc, bb;
+                int nn, dd;
                 nn = eventbuffer[0];
                 dd = eventbuffer[1];
                 dd = pow(2, dd);
-                cc = eventbuffer[2];
-                bb = eventbuffer[3];
+                //cc = eventbuffer[2];
+                //bb = eventbuffer[3];
 
                 char info[50];
                 sprintf(info, "%02d/%02d", nn, dd);

@@ -49,7 +49,7 @@ private:
 
     QString currentMapping;
 
-    QMap<int,QString> pathMapping;
+    QMap<int, QString> pathMapping;
 
     QString getNoteName(int note);
 };

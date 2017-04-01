@@ -53,7 +53,7 @@ public:
 
     inline MIDIReaderCore *getMIDIReaderCore()
     {
-        if (readerCore==NULL) qDebug() << "MIDIEditor: reader core is null" << endl;
+        if (readerCore == NULL) qDebug() << "MIDIEditor: reader core is null" << endl;
         return readerCore;
     }
 

@@ -1,3 +1,5 @@
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include "wavewritercore.h"
 
 static double defaultAM(double)

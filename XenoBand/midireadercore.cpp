@@ -154,7 +154,7 @@ void MIDIReaderCore::readTrack(ifstream &ifs)
         {
             ifs.read(buffer + 1, 2); // 2 more: meta type, length
 
-            int eventLength = (int) buffer[2];
+            int eventLength = static_cast<int>(buffer[2]);
 
             char eventbuffer[eventLength + 1];
             eventbuffer[(int)eventLength] = '\0'; // to end the string

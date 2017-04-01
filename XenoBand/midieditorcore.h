@@ -11,13 +11,13 @@ class MIDIEditorCore
 public:
     MIDIEditorCore();
 
-    QList<MIDINoteEvent*> noteEventList;
+    QList<MIDINoteEvent *> noteEventList;
 
     /* binary search for position and then insert */
-    void insertNoteEvent(MIDINoteEvent* event);
+    void insertNoteEvent(MIDINoteEvent *event);
 
     /* binary search for position and then remove */
-    void removeNoteEvent(MIDINoteEvent* event);
+    void removeNoteEvent(MIDINoteEvent *event);
 
     /* Removes the note event on given index in note event list */
     void removeNoteEvent(int index);
@@ -29,10 +29,10 @@ public:
     int getIndex(int position);
 
     /* Returns an on event corresponding to given MIDI note */
-    MIDINoteEvent* getOnEvent(QGraphicsRectItem* item);
+    MIDINoteEvent* getOnEvent(QGraphicsRectItem *item);
 
     /* Returns an off event corresponding to given MIDI note */
-    MIDINoteEvent* getOffEvent(QGraphicsRectItem* item);
+    MIDINoteEvent* getOffEvent(QGraphicsRectItem *item);
 
 private:
     /* Fixed size of the height of each note representation */

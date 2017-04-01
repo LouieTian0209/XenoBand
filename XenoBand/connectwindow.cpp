@@ -45,7 +45,7 @@ void ConnectWindow::closeEvent(QCloseEvent *)
     QDataStream out(&array,QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_5);
 
-    QString message = "[" + ui->nickname->text() + "] has left...";
+    QString message = "[" + ui->nickname->text() + "] has left.\n";
 
     // send to server
     out << QString(message);
@@ -77,7 +77,7 @@ void ConnectWindow::on_sendMessage_clicked()
 
 void ConnectWindow::connected(){
     char message[50];
-    sprintf(message, "Successfully connected to %s:%s",
+    sprintf(message, "Successfully connected to %s:%s.\n",
             ui->connectIP->text().toStdString().c_str(), ui->connectPort->text().toStdString().c_str());
     ui->textBrowser->append(message);
 
@@ -99,7 +99,7 @@ void ConnectWindow::on_connectToServer_clicked()
     connect(client, SIGNAL(connected()), this, SLOT(connected()));
     connect(client, SIGNAL(disconnected()), this, SLOT(deleteLater()));
 
-    client->connectToHost(QHostAddress(ui->connectIP->text()),ui->connectPort->text().toInt());
+    client->connectToHost(QHostAddress(ui->connectIP->text()), ui->connectPort->text().toInt());
 
     client->waitForConnected();
 
@@ -131,7 +131,7 @@ void ConnectWindow::on_startServer_clicked()
 void ConnectWindow::receiveMIDI(int note)
 {
     QByteArray array;
-    QDataStream out(&array,QIODevice::WriteOnly);
+    QDataStream out(&array, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_5);
 
     QString message = "[" + ui->nickname->text() + "] " + MIDI_EVENT + QString::number(note);
@@ -171,7 +171,7 @@ void ConnectWindow::receiveMessage(QString message)
 
             instname = SoundMappingCore::getMapping(assMap.size() % size);
 
-            qDebug() << nickname << "assigned to play" << instname;
+            qDebug() << nickname << " is assigned to play " << instname;
 
             SoundMappingCore *smCore = new SoundMappingCore;
             smCore->initPathMapping(instname);
@@ -211,9 +211,9 @@ void ConnectWindow::on_assignButton_clicked()
 
     formLayout->addRow(new QLabel("Nickname"), new QLabel("Instrument"));
 
-    foreach (QString nickname , assMap.keys())
+    foreach (QString nickname, assMap.keys())
     {
-        QString instname = assMap[nickname];
+        //QString instname = assMap[nickname];
 
         QLabel *nicknameLabel = new QLabel(nickname);
         QComboBox *instnameComboBox = new QComboBox;
@@ -222,7 +222,7 @@ void ConnectWindow::on_assignButton_clicked()
 
         QStringList list = SoundMappingCore::getMappings();
 
-        foreach (QString inst , list)
+        foreach (QString inst, list)
         {
             instnameComboBox->addItem(inst);
         }
@@ -241,7 +241,7 @@ void ConnectWindow::reassign(const QString &s)
 {
     qDebug() << "reassign" << s << "triggered";
 
-    foreach (QString nickname , comboMap.keys())
+    foreach (QString nickname, comboMap.keys())
     {
         QString instname = comboMap[nickname]->currentText();
         assMap[nickname] = instname;

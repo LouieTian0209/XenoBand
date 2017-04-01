@@ -29,10 +29,10 @@ void AudioRecorder::timeout() {
     // [YZ] use local variable
     int time = this->time;
 
-    int ms = time%1000;
-    time/=1000;
-    int ss = time%60;
-    time/=60;
+    int ms = time % 1000;
+    time /= 1000;
+    int ss = time % 60;
+    time /= 60;
     int mm = time;
     char buffer[50];
     sprintf(buffer, "Recording - %02d:%02d.%03d", mm, ss, ms);
