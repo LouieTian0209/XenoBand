@@ -100,7 +100,7 @@ void MIDIReaderCore::readTrack(ifstream &ifs)
             ifs.read(buffer, 1);
             byte = buffer[0];
 
-            if ((0x80 <= byte) && (byte <= 0xff))
+            if (0x80 <= byte)
                 break;
             else
                 emit sendRawMIDI(1, string("<undefined event type>"));
