@@ -26,7 +26,7 @@ Keyboard::Keyboard(QWidget *parent) :
     ui->pushButton_E2->setStyleSheet("QPushButton{ background-color: white; }");
     ui->pushButton_F2->setStyleSheet("QPushButton{ background-color: white; }");
 
-    QSettings setting("XenoBand","sound mapping");
+    QSettings setting("XenoBand", "sound mapping");
     setting.beginGroup("midi#-key Mapping");
     ui->pushButton_C->setText(setting.value("60").toString());
     ui->pushButton_D->setText(setting.value("62").toString());
@@ -46,19 +46,21 @@ Keyboard::Keyboard(QWidget *parent) :
 
     setting.beginGroup("mappingName");
     foreach(const QString &name,setting.allKeys()){
-        ui->comboBox->addItem(name);
+        QString filePath = QString::fromStdString(Core::defaultDirPath()) + "\\" + setting.value(name).toString();
+        QDir dir(filePath);
+        if(dir.exists())
+            ui->comboBox->addItem(name);
     }
     setting.endGroup();
 
-    if (ui->comboBox->children().size()==0)
+    if (ui->comboBox->children().size() == 0)
     {
-        qDebug() << "Keyboard: no instrument!";
+        qDebug() << "Keyboard: No instrument!";
         return;
     }
 
     smCore->initPathMapping(ui->comboBox->itemText(qrand() % ui->comboBox->children().size()));
 }
-
 
 Keyboard::~Keyboard()
 {
@@ -75,7 +77,7 @@ void Keyboard::keyPressEvent(QKeyEvent *keyevent){
 
     if (!setting.contains(key))
     {
-        qDebug() << "Keyboard: no key mapping for" << key;
+        qDebug() << "Keyboard: No key mapping for " << key;
         return;
     }
 
@@ -104,23 +106,23 @@ void Keyboard::keyPressEvent(QKeyEvent *keyevent){
 void Keyboard::keyReleaseEvent(QKeyEvent *keyevent){
     QString key=keyevent->text().toUpper();
 
-    QSettings setting("XenoBand",ui->comboBox->itemText(0));
+    QSettings setting("XenoBand", ui->comboBox->itemText(0));
     setting.beginGroup("key-midi# Mapping");
     int MIDInum=setting.value(key).toInt();
 
     setting.endGroup();
     switch(MIDInum) {
-    case 60:on_pushButton_C_released();break;
-    case 62:on_pushButton_D_released();break;
-    case 64:on_pushButton_E_released();break;
-    case 65:on_pushButton_F_released();break;
-    case 67:on_pushButton_G_released();break;
-    case 69:on_pushButton_A_released();break;
-    case 71:on_pushButton_B_released();break;
-    case 72:on_pushButton_C2_released();break;
-    case 74:on_pushButton_D2_released();break;
-    case 76:on_pushButton_E2_released();break;
-    case 77:on_pushButton_F2_released();break;
+    case 60:on_pushButton_C_released(); break;
+    case 62:on_pushButton_D_released(); break;
+    case 64:on_pushButton_E_released(); break;
+    case 65:on_pushButton_F_released(); break;
+    case 67:on_pushButton_G_released(); break;
+    case 69:on_pushButton_A_released(); break;
+    case 71:on_pushButton_B_released(); break;
+    case 72:on_pushButton_C2_released(); break;
+    case 74:on_pushButton_D2_released(); break;
+    case 76:on_pushButton_E2_released(); break;
+    case 77:on_pushButton_F2_released(); break;
     }
 
 }
