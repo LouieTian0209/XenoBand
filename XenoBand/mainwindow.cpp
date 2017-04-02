@@ -10,6 +10,7 @@
 #include "mainwindow.h"
 #include "midieditor.h"
 #include "midireader.h"
+#include "networkutil.h"
 #include "pitchshifter.h"
 #include "waveeditor.h"
 #include "wavereader.h"
@@ -23,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    NetworkUtil::sendUsage("", "opened main window");
 }
 
 MainWindow::~MainWindow()
@@ -156,4 +159,10 @@ void MainWindow::on_instantChatButton_clicked()
 void MainWindow::on_tutorialButton_clicked()
 {
     QDesktopServices::openUrl(QUrl("http://xenoband.com"));
+}
+
+
+void MainWindow::closeEvent(QCloseEvent *)
+{
+    NetworkUtil::sendUsage("", "closed main window");
 }

@@ -1,6 +1,7 @@
 #include <QInputDialog>
 #include <QSound>
 
+#include "networkutil.h"
 #include "scale.h"
 #include "soundmapping.h"
 #include "wavewriter.h"
@@ -84,6 +85,8 @@ WaveWriter::WaveWriter(QWidget *parent) :
     ui->msBox->setValue(2000);
 
     this->layout()->addWidget(waveWidget);
+
+    NetworkUtil::sendUsage("", "opened wave creator");
 }
 
 WaveWriter::~WaveWriter()
@@ -261,6 +264,8 @@ void WaveWriter::on_exportButton_clicked()
         path += QDir::separator() + instrumentName;
 
         saveInstrument(path);
+
+        NetworkUtil::sendUsage("", "created an instrument named \"" + instrumentName + "\"");
 
         // XXX [YZ] hack to save key mapping
         // not a proper solution

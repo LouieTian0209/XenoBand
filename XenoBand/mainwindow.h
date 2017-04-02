@@ -81,6 +81,8 @@ private slots:
     void on_localServerButton_clicked();
     void on_instantChatButton_clicked();
 
+    void closeEvent(QCloseEvent *);
+
 private:
     Ui::MainWindow *ui;
 };

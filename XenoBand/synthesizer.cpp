@@ -1,3 +1,4 @@
+#include "networkutil.h"
 #include "oscillator.h"
 #include "scale.h"
 #include "synthesizer.h"
@@ -27,6 +28,8 @@ Synthesizer::Synthesizer(QWidget *parent) :
     ui->setupUi(this);
 
     ui->resultAreaWidgetContents->layout()->addWidget(resultWaveWidget = new WaveWidget);
+
+    NetworkUtil::sendUsage("", "opened sound synthesizer");
 }
 
 Synthesizer::~Synthesizer()

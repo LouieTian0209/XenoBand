@@ -29,3 +29,23 @@ QString NetworkUtil::sendMessage(QString name, QString message) {
 
     return reply->readAll();
 }
+
+QString NetworkUtil::sendUsage(QString key, QString value) {
+    // send message
+    QUrl url;
+    QUrl serviceUrl = QUrl("http://xenoband.com/use.php");
+    QByteArray postData;
+    postData.append("key=").append(key).append("&");
+    postData.append("value=").append(value);
+
+    QNetworkRequest request(serviceUrl);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+    request.setHeader(QNetworkRequest::UserAgentHeader, "PPL");
+
+    QNetworkReply *reply = networkManager->post(request, postData);
+    QEventLoop eventLoop;
+    QObject::connect(networkManager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+    eventLoop.exec();
+
+    return reply->readAll();
+}
