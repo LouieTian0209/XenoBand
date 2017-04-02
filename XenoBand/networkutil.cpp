@@ -32,6 +32,12 @@ QString NetworkUtil::sendMessage(QString name, QString message) {
 
 QString NetworkUtil::sendUsage(QString key, QString value) {
     // send message
+#ifdef Q_OS_WIN
+    value += " (Windows)";
+#endif
+#ifdef Q_OS_MACX
+    value += " (Mac)";
+#endif
     QUrl url;
     QUrl serviceUrl = QUrl("http://xenoband.com/use.php");
     QByteArray postData;
