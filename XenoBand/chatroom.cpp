@@ -52,7 +52,7 @@ void Chatroom::on_sendFile_clicked()
 void Chatroom::createFormatFile(QString type){
     QFile file(fileFormat);
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text)){
-        qDebug() << "Cannot open file.\n";
+        qDebug() << "Cannot open" << file.fileName() << "\n";
         return;
     }
     QTextStream out(&file);
@@ -68,12 +68,12 @@ void Chatroom::createFormatFile(QString type){
     }
     else{
         QString filepath = ui->Message->text();
-        out << "//FIRENAME\n";
+        out << "//FILENAME\n";
         out << filepath.section("/",-1,-1) << "\n";//filename
         out << "//DATA\n";
         QFile sendfile(filepath);
         if(!sendfile.open(QIODevice::ReadOnly)){
-            qDebug()<<"cannot read";
+            qDebug()<<"Cannot read" << sendfile.fileName() << "\n";
             return;
         }
         QTextStream in(&sendfile);
@@ -103,7 +103,7 @@ void Chatroom::sendData(){
         buffer.clear();
         buffer = file.read(1000000);
 
-        qDebug() << "Reading: " <<buffer.size();
+        qDebug() << "Reading:" <<buffer.size();
         if(buffer.size() == 0){
 
             break;
@@ -145,7 +145,7 @@ void Chatroom::readyRead(){
     QByteArray buffer=clientSocket->readAll();
     QString string = buffer;
 
-    qDebug() << "Read: " << buffer.size();
+    qDebug() << "Read:" << buffer.size();
     file.write(buffer);
     qDebug() << "String:" << string;
     if(string.contains(QString::fromStdString("//END")) == true){
@@ -170,23 +170,23 @@ void Chatroom::display(){
         if(line.compare(QString::fromStdString("//ID")) == 0){
             line = in.readLine();
             name = line;
-            qDebug() << "Name: " << name;
+            qDebug() << "Name:" << name;
         }
         else if(line.compare(QString::fromStdString("//TYPE")) == 0){
             line = in.readLine();
             type = line;
-            qDebug() << "Type: " << type;
+            qDebug() << "Type:" << type;
         }
         else if(line.compare(QString::fromStdString("//FIRENAME")) == 0){
             line = in.readLine();
             filename = line;
-            qDebug() << "Filename: " << filename;
+            qDebug() << "Filename:" << filename;
         }
         else if(line.compare(QString::fromStdString("//DATA")) == 0){
             if(type.compare(QString::fromStdString("TEXT")) == 0){
                 line = in.readLine();
                 message = line;
-                qDebug() << "Message: " << message;
+                qDebug() << "Message:" << message;
                 break;
             }
             else{
@@ -231,7 +231,7 @@ void Chatroom::saveFile(){
 
 void Chatroom::on_disconnect_clicked()
 {
-    qDebug() << "Disconnected.";
+    qDebug() << "Disconnected.\n";
     clientSocket->close();
     ui->ConnectToServer->setEnabled(true);
     ui->disconnect->setEnabled(false);

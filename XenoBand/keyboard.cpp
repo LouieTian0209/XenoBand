@@ -46,7 +46,7 @@ Keyboard::Keyboard(QWidget *parent) :
 
     setting.beginGroup("mappingName");
     foreach(const QString &name,setting.allKeys()){
-        QString filePath = QString::fromStdString(Core::defaultDirPath()) + "\\" + setting.value(name).toString();
+        QString filePath = QString::fromStdString(Core::defaultDirPath()) + QDir::separator() + setting.value(name).toString();
         QDir dir(filePath);
         if(dir.exists())
             ui->comboBox->addItem(name);
@@ -77,7 +77,7 @@ void Keyboard::keyPressEvent(QKeyEvent *keyevent){
 
     if (!setting.contains(key))
     {
-        qDebug() << "Keyboard: No key mapping for " << key;
+        qDebug() << "Keyboard: No key mapping for" << key;
         return;
     }
 
